@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../assets/find-rate-logo.png'; // Ajusta la ruta según tu estructura
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -23,11 +24,13 @@ const Login = () => {
         ← Volver al inicio
       </Link>
 
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-80 text-center">
+      <div className="bg-white rounded-2xl shadow-xl p-8 w-96 text-center">
         {/* Logo */}
-        <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 bg-clip-text text-transparent">
-          Find <span className="text-orange-500">&</span> Rate <span className="text-purple-500">★</span>
-        </h1>
+        <img
+          src={logo}
+          alt="Find & Rate Logo"
+          className="mx-auto mb-4 w-48 object-contain"
+        />
 
         <p className="text-sm text-gray-600 mb-6">
           ¡Bienvenido de vuelta! Inicia sesión para continuar!
@@ -56,7 +59,7 @@ const Login = () => {
               className="w-full px-4 py-2 border-2 border-pink-300 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
             />
             <span
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer"
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer select-none"
               onClick={togglePassword}
             >
               {showPassword ? '🙈' : '👁️'}
@@ -89,7 +92,7 @@ const Login = () => {
 
         {/* Registro */}
         <p className="text-xs text-gray-600">
-          ¿No tienes cuenta?{" "}
+          ¿No tienes cuenta?{' '}
           <Link to="/registro" className="text-pink-500 font-semibold hover:underline">
             Regístrate aquí
           </Link>
