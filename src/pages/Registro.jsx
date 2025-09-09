@@ -4,7 +4,7 @@ import logo from '../assets/find-rate-logo.png';
 
 const Registro = () => {
   const [formData, setFormData] = useState({
-    tipoUsuario: "usuario", // para seleccionar tipo usuario o empresario
+    tipoUsuario: "usuario",
     nombre: "",
     apellido: "",
     pais: "",
@@ -16,17 +16,14 @@ const Registro = () => {
     genero: "",
   });
 
-  // Manejar cambios en inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Cambiar tipo usuario o empresario
   const handleTipoChange = (tipo) => {
     setFormData({ ...formData, tipoUsuario: tipo });
   };
 
-  // Enviar formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,6 +42,7 @@ const Registro = () => {
       const data = await res.json();
       alert(data.message);
     } catch (error) {
+      console.error(error); // 🔹 Registrar error para ESLint
       alert("Error al registrar, intenta nuevamente.");
     }
   };
@@ -55,8 +53,7 @@ const Registro = () => {
         <img src={logo} alt="Find & Rate" className="mx-auto mb-3 w-40" />
 
         <p className="text-sm text-gray-600 mb-6">
-          Crea tu cuenta como usuario
-           y descubre los mejores servicios
+          Crea tu cuenta como usuario y descubre los mejores servicios
         </p>
 
         <p className="text-left font-semibold mb-2">¿Cómo te quieres registrar?</p>
@@ -89,86 +86,16 @@ const Registro = () => {
         </div>
 
         <form className="flex flex-col gap-3 text-left" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="nombre"
-            placeholder="Nombre"
-            required
-            value={formData.nombre}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
-          />
-          <input
-            type="text"
-            name="apellido"
-            placeholder="Apellido"
-            required
-            value={formData.apellido}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
-          />
-          <input
-            type="text"
-            name="pais"
-            placeholder="País"
-            required
-            value={formData.pais}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Correo electrónico"
-            required
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
-          />
-          <input
-            type="tel"
-            name="telefono"
-            placeholder="Número de teléfono"
-            required
-            value={formData.telefono}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Contraseña"
-            required
-            value={formData.password}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
-          />
-          <input
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirmar contraseña"
-            required
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
-          />
-          <input
-            type="number"
-            name="edad"
-            placeholder="Edad"
-            required
-            value={formData.edad}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400"
-          />
+          <input type="text" name="nombre" placeholder="Nombre" required value={formData.nombre} onChange={handleChange} className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400" />
+          <input type="text" name="apellido" placeholder="Apellido" required value={formData.apellido} onChange={handleChange} className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400" />
+          <input type="text" name="pais" placeholder="País" required value={formData.pais} onChange={handleChange} className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400" />
+          <input type="email" name="email" placeholder="Correo electrónico" required value={formData.email} onChange={handleChange} className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400" />
+          <input type="tel" name="telefono" placeholder="Número de teléfono" required value={formData.telefono} onChange={handleChange} className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400" />
+          <input type="password" name="password" placeholder="Contraseña" required value={formData.password} onChange={handleChange} className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400" />
+          <input type="password" name="confirmPassword" placeholder="Confirmar contraseña" required value={formData.confirmPassword} onChange={handleChange} className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400" />
+          <input type="number" name="edad" placeholder="Edad" required value={formData.edad} onChange={handleChange} className="w-full px-4 py-2 border border-pink-400 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-400" />
 
-          <select
-            name="genero"
-            required
-            value={formData.genero}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-full bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
-          >
+          <select name="genero" required value={formData.genero} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-full bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
             <option value="">Género</option>
             <option value="mujer">Mujer</option>
             <option value="hombre">Hombre</option>
@@ -183,10 +110,7 @@ const Registro = () => {
           </div>
 
           <div className="flex flex-col gap-4 mt-4">
-            <button
-              type="submit"
-              className="w-full py-3 rounded-full font-bold text-white bg-gradient-to-r from-pink-400 via-pink-300 to-yellow-300 hover:scale-105 transition-transform"
-            >
+            <button type="submit" className="w-full py-3 rounded-full font-bold text-white bg-gradient-to-r from-pink-400 via-pink-300 to-yellow-300 hover:scale-105 transition-transform">
               Registrarme
             </button>
 
